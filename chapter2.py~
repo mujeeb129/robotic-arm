@@ -1,0 +1,7 @@
+import cv2 as cv
+
+image = cv.imread('image.jpg')
+imgGray = cv.cvtColor(image , cv.COLOR_BGR2GRAY)
+
+cv.imshow("grey" , imgGray)
+cv.waitKey(0)

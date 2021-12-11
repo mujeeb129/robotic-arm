@@ -1,0 +1,21 @@
+# title:Programming Details
+# author : Mujeeb Rahman
+# date : 28-Oct-2021
+* PREREQUISITES:
+** Basic Python Programming:
+*** DONE File managing and handling
+*** TODO Basic OpenCV
+*** TODO Learn more about datasets and file types
+** TODO Read all the JOURNAL PAPERS you can get
+
+# date: 7-11
+
+* MEETING
+** AGENDA
+*** Design
+*** Application
+**** Assistant for pharmasists.
+**** Assisting a bed-ridden patients.
+***** 
+**** Industrial applications for increasing accuracy and decreasing the human dependency.
+**** Can be used for advanced search and rescue missions
