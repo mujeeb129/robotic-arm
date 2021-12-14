@@ -3,7 +3,7 @@ import numpy as np
 
 #to start capturing video
 faceCascade = cv.CascadeClassifier(cv.data.haarcascades + 'haarcascade_frontalface_default.xml')
-cap = cv.VideoCapture(0)
+cap = cv.VideoCapture(2)
 cap.set(3,640)
 cap.set(4,480)
 
