@@ -2,8 +2,9 @@ import os
 import cv2 as cv
 
 def LiveSnap():
+    recognizer = cv.face.LBPHFaceRecognizer_create()
     subName = input('Enter subject number : ')
-
+    
     if not os.path.isdir('dataset/' + subName):
         os.makedirs('dataset/' + subName)
     else:
