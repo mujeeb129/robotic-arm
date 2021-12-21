@@ -43,7 +43,7 @@ while True:
         cv.putText(
             img,
             str(id),
-            (x+5, y-5),
+            (x, y),
             font,
             1,
             (255 ,255, 255),
