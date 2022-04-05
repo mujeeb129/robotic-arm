@@ -1,7 +1,15 @@
 import cv2 as cv
 import numpy as np
 import os
+'''
+class Face_Recognizer:
+    self.recognizer = cv.face.LBPHFaceRecognizer_create()
+    self.recognizer.read('trainer.yml')
+'''
 
+
+
+#initializing the recognizer
 recognizer = cv.face.LBPHFaceRecognizer_create()
 recognizer.read('trainer.yml')
 
@@ -10,7 +18,7 @@ font = cv.FONT_HERSHEY_SIMPLEX
 
 id = 0
 
-name = ['admin']
+name = ['admin' , 'unknown', 'unknown']
 
 cam = cv.VideoCapture(0)
 
@@ -33,11 +41,12 @@ while True:
     for (x,y,w,h) in faces:
         cv.rectangle(img, (x,y), (x+w, y+h), (0, 255, 0), 2)
         id, confidence = recognizer.predict(gray[y:y+h,x:x+w])
-        if confidence < 100:
+        if confidence <= 100:
             id = name[id]
             confidence = ' {0}%'.format(round(100-confidence))
+            print(confidence)
         else:
-            id = 'dunno'
+            id = name[1] 
             confidence = ' {0}%'.format(round(100-confidence))
 
         cv.putText(

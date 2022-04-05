@@ -2,7 +2,7 @@
 # importing cv2 
 import cv2
   
-imcap = cv2.VideoCapture('http://192.168.1.2:4747/mjpegfeed')
+imcap = cv2.VideoCapture(0)
 imcap.set(3, 640) 
 imcap.set(4, 480) 
 
