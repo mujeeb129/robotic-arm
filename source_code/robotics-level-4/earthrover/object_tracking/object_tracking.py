@@ -1,24 +1,3 @@
-  """
-Project: AI Robot - Object Tracking
-Author: Jitesh Saini
-Github: https://github.com/jiteshsaini
-website: https://helloworld.co.in
-
-- The robot uses PiCamera to capture frames. 
-- An object within the frame is detected using Machine Learning moldel & TensorFlow Lite interpreter. 
-- Using OpenCV, the frame is overlayed with information such as bounding boxes, center coordinates of the object, deviation of the object from center of the frame etc.
-- The frame with overlays is streamed over LAN using FLASK, which can be accessed using a browser by typing IP address of the RPi followed by the port (2204 as per this code)
-- Google Coral USB Accelerator should be used to accelerate the inferencing process.
-
-When Coral USB Accelerator is connected, amend line 14 of util.py as:-
-edgetpu = 1 
-
-When Coral USB Accelerator is not connected, amend line 14 of util.py as:-
-edgetpu = 0 
-
-The code moves the robot in order to bring center of the object closer to center of the frame.
-"""
-
 import common as cm
 import cv2
 import numpy as np
@@ -35,7 +14,7 @@ cap = cv2.VideoCapture(0)
 threshold=0.2
 top_k=5 #number of objects to be shown as detected 
 
-model_dir = '/var/www/html/all_models'
+model_dir = '~/casper/robotics-level-4/all_models'
 model = 'mobilenet_ssd_v2_coco_quant_postprocess.tflite'
 model_edgetpu = 'mobilenet_ssd_v2_coco_quant_postprocess_edgetpu.tflite'
 lbl = 'coco_labels.txt'
@@ -69,19 +48,19 @@ def video_feed():
 
 #-----initialise motor speed-----------------------------------
 
-import RPi.GPIO as GPIO 
-GPIO.setmode(GPIO.BCM)  # choose BCM numbering scheme  
+#import RPi.GPIO as GPIO 
+#GPIO.setmode(GPIO.BCM)  # choose BCM numbering scheme  
       
-GPIO.setup(20, GPIO.OUT)# set GPIO 20 as output pin
-GPIO.setup(21, GPIO.OUT)# set GPIO 21 as output pin
+#GPIO.setup(20, GPIO.OUT)# set GPIO 20 as output pin
+#GPIO.setup(21, GPIO.OUT)# set GPIO 21 as output pin
       
-pin20 = GPIO.PWM(20, 100)    # create object pin20 for PWM on port 20 at 100 Hertz  
-pin21 = GPIO.PWM(21, 100)    # create object pin21 for PWM on port 21 at 100 Hertz  
+#pin20 = GPIO.PWM(20, 100)    # create object pin20 for PWM on port 20 at 100 Hertz  
+#pin21 = GPIO.PWM(21, 100)    # create object pin21 for PWM on port 21 at 100 Hertz  
 
 #set speed to maximum value
-val=100
-pin20.start(val)              # start pin20 on 0 percent duty cycle (off)  
-pin21.start(val)              # start pin21 on 0 percent duty cycle (off)  
+val=25
+#pin20.start(val)              # start pin20 on 0 percent duty cycle (off)  
+#pin21.start(val)              # start pin21 on 0 percent duty cycle (off)  
     
 print("speed set to: ", val)
 #---------------------------------------------------------------
@@ -105,7 +84,7 @@ def track_object(objs,labels):
     k=0
     flag=0
     for obj in objs:
-        lbl=labels.get(obj.id, obj.id)
+        lbl=labels.get(obj.id, obj.i)
         k = arr_valid_objects.count(lbl)
         if (k>0):
             x_min, y_min, x_max, y_max = list(obj.bbox)

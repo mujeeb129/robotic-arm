@@ -7,7 +7,7 @@ https://github.com/google-coral/examples-camera/tree/master/opencv
 """
 import numpy as np
 from PIL import Image
-import tflite_runtime.interpreter as tflite
+import tflite_runtime as tflite
 import platform
 
 
@@ -19,11 +19,11 @@ EDGETPU_SHARED_LIB = {
 
 def make_interpreter_0(model_file):
     model_file, *device = model_file.split('@')
-    return tflite.Interpreter(model_path=model_file)
+    return tflite(model_path=model_file)
 
 def make_interpreter_1(model_file):
     model_file, *device = model_file.split('@')
-    return tflite.Interpreter(
+    return tflite(
       model_path=model_file,
       experimental_delegates=[
           tflite.load_delegate(EDGETPU_SHARED_LIB,

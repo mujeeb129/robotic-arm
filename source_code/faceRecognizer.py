@@ -20,7 +20,7 @@ id = 0
 
 name = ['admin' , 'unknown', 'unknown']
 
-cam = cv.VideoCapture(0)
+cam = cv.VideoCapture(2)
 
 cam.set(3, 640) # set video widht
 cam.set(4, 480) # set video height
